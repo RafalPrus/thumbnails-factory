@@ -62,7 +62,7 @@ class Progress:
 
 
 class Statistics:
-    """ generating statistics based on the date """
+    """ generating statistics based on the date"""
     SHORTCUT = 'PS'
     LABEL = 'Pokaż statystyki'
 
