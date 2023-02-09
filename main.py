@@ -11,11 +11,11 @@ class Application:
 
         screen = menu.get_screen()
         if isinstance(screen, FolderCounter):
-            self.creating_thumbnails(screen)
+            self.create_thumbnails(screen)
         else:
             self.get_statistics(screen)
 
-    def creating_thumbnails(self, screen):
+    def create_thumbnails(self, screen):
         already_exist = [] # for listing folders that already contained thumbnails
         progress = Progress()
         progress.welcome()

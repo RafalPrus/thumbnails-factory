@@ -68,7 +68,7 @@ class Statistics:
 
     def get_date(self):
         year = input('Wybierz rok [rrrr]: ')
-        month = input(('Wybierz miesiąc [numer_miesiąca]: '))
+        month = input(('Wybierz miesiąc [mm]: '))
         return [year, month]
 
     def show_statistic(self):
