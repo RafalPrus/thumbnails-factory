@@ -33,11 +33,12 @@ class Application:
         os.chdir('..')
         entry_repository.save(screen.CATEGORIES_COUNTER)
 
-    def get_statistics(self, screen):
+    @staticmethod
+    def get_statistics(screen):
         screen.show_statistic()
 
-
-    def get_entry_repository(self):
+    @staticmethod
+    def get_entry_repository():
         return EntryRepository()
 
     def scan_folders(self, folders: list, path, progress: Progress, screen, directory: str = 'small'):
@@ -64,6 +65,7 @@ class Application:
             Application.ALREADY_EXIST.append(folder)
             os.chdir('..')
             return False
+
     def scan_images(self, files, screen, path_in_folder, directory: str = 'small'):
         for img in files:
             if img == 'info.txt':
@@ -81,17 +83,6 @@ class Application:
                 os.chdir('..')
 
 
-
 if __name__ == '__main__':
     app = Application()
     app.main()
-
-
-
-
-
-
-
-
-
-
