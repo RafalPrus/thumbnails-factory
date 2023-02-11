@@ -75,12 +75,22 @@ class Application:
                     continue
             if os.path.isfile(os.path.join(path_in_folder, img)) == False:
                 continue
-            names = img.split('.')
-            with Image.open(img) as image:
-                image.thumbnail((1400, 1040))
-                os.chdir(directory)
-                image.save(f'{names[0]}_small.jpg')
-                os.chdir('..')
+            if Application.is_image(img):
+                Application.run_creator(img)
+
+    @staticmethod
+    def is_image(file_name: str):
+        return file_name.endswith('.jpg') or file_name.endswith('.jpeg') or file_name.endswith('.png')
+
+
+    @staticmethod
+    def run_creator(image, directory: str = 'small'):
+        with Image.open(image) as img:
+            names = image.split('.')
+            img.thumbnail((1400, 1040))
+            os.chdir(directory)
+            img.save(f'{names[0]}_small.jpg')
+            os.chdir('..')
 
 
 if __name__ == '__main__':
