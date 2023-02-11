@@ -52,7 +52,7 @@ class Application:
             if self.check_already_exist(new_folder_path, folder) == False:
                 continue
             progress.start_process(folder)
-            self.scan_images(files, screen, path_in_folder)
+            self.scan_images(files, screen)
             progress.finish_folder(folder)
             screen.count_folder()
             os.chdir('..')
@@ -66,17 +66,17 @@ class Application:
             os.chdir('..')
             return False
 
-    def scan_images(self, files, screen, path_in_folder, directory: str = 'small'):
+    def scan_images(self, files, screen):
         for img in files:
-            if img == 'info.txt':
-                with open('info.txt') as text_info:
-                    category = text_info.readline().strip()
-                    screen.count_for_category(category)
-                    continue
-            if os.path.isfile(os.path.join(path_in_folder, img)) == False:
-                continue
-            if Application.is_image(img):
-                Application.run_creator(img)
+            match img:
+                case 'info.txt':
+                    with open('info.txt') as text_info:
+                        category = text_info.readline().strip()
+                        screen.count_for_category(category)
+                        continue
+                case _:
+                    if Application.is_image(img):
+                        Application.run_creator(img)
 
     @staticmethod
     def is_image(file_name: str):
