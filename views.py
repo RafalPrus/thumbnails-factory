@@ -2,7 +2,7 @@ from repositories import ReportRepository
 from terminaltables import AsciiTable
 
 
-class FolderCounter:
+class CategoryCounter:
     """ counts the number of processed folders in a given category and summarizes the operations performed"""
     CATEGORIES_COUNTER = {
         'NAP': 0,
@@ -96,7 +96,7 @@ class Statistics:
 
 class MainMenu:
     OPTIONS = {
-        FolderCounter.SHORTCUT: FolderCounter(),
+        CategoryCounter.SHORTCUT: CategoryCounter(),
         Statistics.SHORTCUT: Statistics()
     }
 
