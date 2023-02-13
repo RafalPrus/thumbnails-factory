@@ -45,6 +45,8 @@ class Application:
         for folder in folders:
             if os.path.isfile(os.path.join(path, folder)):  # to skip and store files that are not folders
                 continue
+            print(folder)
+            print(os.getcwd())
             os.chdir(folder)
             path_in_folder = os.getcwd()
             files = os.listdir(path_in_folder)
@@ -58,7 +60,7 @@ class Application:
             os.chdir('..')
 
     @staticmethod
-    def check_already_exist(new_folder_path, folder):
+    def check_already_exist(new_folder_path, folder: str):
         try:
             os.mkdir(new_folder_path)
         except FileExistsError:
@@ -66,7 +68,7 @@ class Application:
             os.chdir('..')
             return False
 
-    def scan_images(self, files, screen):
+    def scan_images(self, files: list, screen):
         for img in files:
             match img:
                 case 'info.txt':
@@ -81,7 +83,6 @@ class Application:
     @staticmethod
     def is_image(file_name: str):
         return file_name.endswith('.jpg') or file_name.endswith('.jpeg') or file_name.endswith('.png')
-
 
     @staticmethod
     def run_creator(image, directory: str = 'small'):
