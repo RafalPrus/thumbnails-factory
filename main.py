@@ -51,22 +51,17 @@ class Application:
             path_in_folder = os.getcwd()
             files = os.listdir(path_in_folder)
             new_folder_path = os.path.join(path_in_folder, directory)
-            if self.check_already_exist(new_folder_path, folder) == False:
+            if os.path.exists(new_folder_path):
+                Application.ALREADY_EXIST.append(folder)
+                os.chdir('..')
                 continue
+            os.mkdir(new_folder_path)
             progress.start_process(folder)
             self.scan_images(files, screen)
             progress.finish_folder(folder)
             screen.count_folder()
             os.chdir('..')
 
-    @staticmethod
-    def check_already_exist(new_folder_path, folder: str):
-        try:
-            os.mkdir(new_folder_path)
-        except FileExistsError:
-            Application.ALREADY_EXIST.append(folder)
-            os.chdir('..')
-            return False
 
     def scan_images(self, files: list, screen):
         for img in files:
