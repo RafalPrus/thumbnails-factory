@@ -1,4 +1,5 @@
 import os
+import random
 
 from PIL import Image
 from views import Progress, CategoryCounter, MainMenu
@@ -64,28 +65,40 @@ class Application:
 
 
     def process_images(self, files: list, screen):
-        for img in files:
+        product_num = 0
+        if 'info.txt' in files:
+            product_num = Application.read_txt_file(screen)
+        for num, img in enumerate(files):
             match img:
                 case 'info.txt':
-                    with open('info.txt') as text_info:
-                        category = text_info.readline().strip()
-                        screen.count_for_category(category)
-                        continue
+                    continue
                 case _:
                     if Application.is_image(img):
-                        Application.run_thumbnails_creator(img)
+                        Application.run_thumbnails_creator(img, product_num, num)
 
     @staticmethod
     def is_image(file_name: str):
         return file_name.endswith('.jpg') or file_name.endswith('.jpeg') or file_name.endswith('.png')
 
     @staticmethod
-    def run_thumbnails_creator(image, directory: str = 'small'):
+    def read_txt_file(screen):
+        with open('info.txt') as text_info:
+            category = text_info.readline().strip()
+            product_number = text_info.readline().strip()
+            screen.count_for_category(category)
+            return product_number
+
+    @staticmethod
+    def run_thumbnails_creator(image, name: str | None = None, photo_num: int = 0, directory: str = 'small'):
         with Image.open(image) as img:
             names = image.split('.')
             img.thumbnail((1400, 1040))
             os.chdir(directory)
-            img.save(f'{names[0]}_small.jpg')
+            random_num = str(photo_num)*2 + str(random.randint(10000, 99999)) + random.choice('ABCDEFGabcdefg')
+            if name:
+                img.save(f'{name}_{random_num}_small.jpg')
+            else:
+                img.save(f'{names[0]}_small.jpg')
             os.chdir('..')
 
 
