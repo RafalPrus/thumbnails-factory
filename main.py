@@ -94,12 +94,16 @@ class Application:
             names = image.split('.')
             img.thumbnail((1400, 1040))
             os.chdir(directory)
-            random_num = str(photo_num)*2 + str(random.randint(10000, 99999)) + random.choice('ABCDEFGabcdefg')
+            random_num = Application.create_random_num(photo_num)
             if name:
                 img.save(f'{name}_{random_num}_small.jpg')
             else:
                 img.save(f'{names[0]}_small.jpg')
             os.chdir('..')
+
+    @staticmethod
+    def create_random_num(photo_num: int):
+        return str(photo_num)*2 + str(random.randint(10000, 99999)) + random.choice('ABCDEFGabcdefg')
 
 
 if __name__ == '__main__':
