@@ -2,7 +2,7 @@ import os
 import random
 
 from PIL import Image
-from views import Progress, CategoryCounter, MainMenu
+from views import Progress, CategoryCounter, MainMenu, Quit, Statistics
 from repositories import EntryRepository
 
 
@@ -10,14 +10,19 @@ class Application:
     EXISTING_FOLDERS: list[str] = []
 
     def main(self):
-        menu = MainMenu()
-        menu.draw()
+        while True:
+            menu = MainMenu()
+            menu.draw()
 
-        screen = menu.get_screen()
-        if isinstance(screen, CategoryCounter):
-            self.create_thumbnails(screen)
-        else:
-            self.display_statistics(screen)
+            screen = menu.get_screen()
+            if isinstance(screen, CategoryCounter):
+                self.create_thumbnails(screen)
+            elif isinstance(screen, Statistics):
+                self.display_statistics(screen)
+            else:
+                print('See you next time!')
+                return False
+
 
     def create_thumbnails(self, screen: CategoryCounter):
         progress = Progress()

@@ -39,6 +39,7 @@ class CategoryCounter:
 
     def show_processed_folders(self):
         print(f'W sumie przetworzono: {self.FOLDERS_DONE} folderów')
+        print('----------------------------------------------\n')
 
     @property
     def categories_counter(self):
@@ -93,11 +94,17 @@ class Statistics:
     def get_repository(self):
         return ReportRepository()
 
+class Quit():
+    """ generating statistics based on the date"""
+    SHORTCUT = 'EX'
+    LABEL = 'Zakończ'
+
 
 class MainMenu:
     OPTIONS = {
         CategoryCounter.SHORTCUT: CategoryCounter(),
-        Statistics.SHORTCUT: Statistics()
+        Statistics.SHORTCUT: Statistics(),
+        Quit.SHORTCUT: Quit()
     }
 
     @staticmethod
