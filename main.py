@@ -9,7 +9,7 @@ from repositories import EntryRepository
 class Application:
     EXISTING_FOLDERS: list[str] = []
 
-    def main(self):
+    def main(self) -> bool:
         while True:
             menu = MainMenu()
             menu.draw()
@@ -44,7 +44,7 @@ class Application:
         screen.show_statistic()
 
     @staticmethod
-    def get_entry_repository():
+    def get_entry_repository() -> EntryRepository:
         return EntryRepository()
 
     def process_folders(self, folders: list, path, progress: Progress, screen, directory: str = 'small'):
@@ -82,11 +82,11 @@ class Application:
                         Application.run_thumbnails_creator(img, product_num, num)
 
     @staticmethod
-    def is_image(file_name: str):
+    def is_image(file_name: str) -> bool:
         return file_name.endswith('.jpg') or file_name.endswith('.jpeg') or file_name.endswith('.png')
 
     @staticmethod
-    def read_txt_file(screen):
+    def read_txt_file(screen) -> str:
         with open('info.txt') as text_info:
             category = text_info.readline().strip()
             product_number = text_info.readline().strip()
