@@ -14,7 +14,12 @@ class EntryRepository:
             cursor.execute('SELECT `id`, `name` from `category` WHERE `name`=?', (category_name, ))
             return cursor.fetchall()[0][0]
 
-    def save(self, counter):
+    def get_unique_numbers(self):
+        with sqlite3.connect('library.db') as connection:
+            cursor = connection.cursor()
+            cursor.execute('SELECT `unique_number` from `unique_product_numbers`')
+            return cursor.fetchall()
+    def save(self, counter: dict, unique_numbers: list):
         """ writes data to the entry table
         based on the data retrieved from the counter
         """
@@ -28,6 +33,13 @@ class EntryRepository:
                             category_id,
                             counter[category]
                     ))
+            list_of_unique_numbers = [element[0] for element in self.get_unique_numbers()]
+            for number in unique_numbers:
+                if number not in list_of_unique_numbers:
+                    cursor.execute(
+                        'INSERT INTO unique_product_numbers(`unique_number`) VALUES(?)', (
+                            number,
+                        ))
             connection.commit()
 
 

@@ -2,7 +2,7 @@ import os
 import random
 
 from PIL import Image
-from views import Progress, CategoryCounter, MainMenu, Quit, Statistics
+from views import Progress, CategoryCounter, MainMenu, Statistics
 from repositories import EntryRepository
 
 
@@ -23,7 +23,6 @@ class Application:
                 print('See you next time!')
                 return False
 
-
     def create_thumbnails(self, screen: CategoryCounter):
         progress = Progress()
         progress.welcome()
@@ -37,7 +36,7 @@ class Application:
         screen.show_result()
         screen.show_processed_folders()
         os.chdir('..')
-        entry_repository.save(screen.CATEGORIES_COUNTER)
+        entry_repository.save(screen.CATEGORIES_COUNTER, screen.UNIQUE_NUMBERS)
 
     @staticmethod
     def display_statistics(screen):
@@ -68,8 +67,8 @@ class Application:
             screen.count_folder()
             os.chdir('..')
 
-
-    def process_images(self, files: list, screen):
+    @staticmethod
+    def process_images(files: list, screen):
         product_num = 0
         if 'info.txt' in files:
             product_num = Application.read_txt_file(screen)
@@ -86,12 +85,16 @@ class Application:
         return file_name.endswith('.jpg') or file_name.endswith('.jpeg') or file_name.endswith('.png')
 
     @staticmethod
-    def read_txt_file(screen) -> str:
+    def read_txt_file(screen) -> str | int:
         with open('info.txt') as text_info:
             category = text_info.readline().strip()
             product_number = text_info.readline().strip()
-            screen.count_for_category(category)
-            return product_number
+            screen.count_for_category(category)  # Count category of processed folder
+            if product_number.isdigit():
+                screen.count_unique_nums(product_number)
+                return product_number
+            else:
+                return 0
 
     @staticmethod
     def run_thumbnails_creator(image, name: str | None = None, photo_num: int = 0, directory: str = 'small'):

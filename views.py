@@ -1,3 +1,5 @@
+from typing import List, Any
+
 from repositories import ReportRepository
 from terminaltables import AsciiTable
 
@@ -18,7 +20,9 @@ class CategoryCounter:
         'NONE': 0
     }
 
-    FOLDERS_DONE = 0 #total number of processed folders
+    FOLDERS_DONE = 0  # total number of processed folders
+
+    UNIQUE_NUMBERS: list[str] = []
 
     SHORTCUT = 'WM'
     LABEL = 'Wykonaj miniaturki'
@@ -39,11 +43,17 @@ class CategoryCounter:
 
     def show_processed_folders(self):
         print(f'W sumie przetworzono: {self.FOLDERS_DONE} folderów')
+        print('----------------------------------------------')
+        print(f'{len(self.UNIQUE_NUMBERS)} folderów miało nadane unikalne numery, były to numery: {self.UNIQUE_NUMBERS}')
         print('----------------------------------------------\n')
 
     @property
     def categories_counter(self):
         return self.CATEGORIES_COUNTER
+
+    def count_unique_nums(self, number):
+        if number not in self.UNIQUE_NUMBERS:
+            self.UNIQUE_NUMBERS.append(number)
 
 
 class Progress:
@@ -69,7 +79,7 @@ class Statistics:
 
     def get_date(self):
         year = input('Wybierz rok [rrrr]: ')
-        month = input(('Wybierz miesiąc [mm]: '))
+        month = input('Wybierz miesiąc [mm]: ')
         return [year, month]
 
     def show_statistic(self):
