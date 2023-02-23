@@ -20,22 +20,28 @@ class Application:
             elif isinstance(screen, Statistics):
                 self.display_statistics(screen)
             else:
-                print('See you next time!')
+                print("See you next time!")
                 return False
 
     def create_thumbnails(self, screen: CategoryCounter):
         progress = Progress()
         progress.welcome()
-        os.chdir('images')  # a specific folder where the folders to create thumbnails must be located
+        os.chdir(
+            "images"
+        )  # a specific folder where the folders to create thumbnails must be located
         current_path = os.getcwd()
         folders = os.listdir(current_path)
         entry_repository = self.get_entry_repository()
         self.process_folders(folders, current_path, progress, screen)
-        if Application.EXISTING_FOLDERS:  # if there were already files with created thumbnails
-            print(f'w tych folderach byly juz miniaturki: {Application.EXISTING_FOLDERS}')
+        if (
+            Application.EXISTING_FOLDERS
+        ):  # if there were already files with created thumbnails
+            print(
+                f"w tych folderach byly juz miniaturki: {Application.EXISTING_FOLDERS}"
+            )
         screen.show_result()
         screen.show_processed_folders()
-        os.chdir('..')
+        os.chdir("..")
         entry_repository.save(screen.CATEGORIES_COUNTER, screen.UNIQUE_NUMBERS)
 
     @staticmethod
@@ -46,35 +52,37 @@ class Application:
     def get_entry_repository() -> EntryRepository:
         return EntryRepository()
 
-    def process_folders(self, folders: list, path, progress: Progress, screen, directory: str = 'small'):
+    def process_folders(
+        self, folders: list, path, progress: Progress, screen, directory: str = "small"
+    ):
         for folder in folders:
-            if os.path.isfile(os.path.join(path, folder)):  # to skip and store files that are not folders
+            if os.path.isfile(
+                os.path.join(path, folder)
+            ):  # to skip files that are not folders
                 continue
-            print(folder)
-            print(os.getcwd())
             os.chdir(folder)
             path_in_folder = os.getcwd()
             files = os.listdir(path_in_folder)
             new_folder_path = os.path.join(path_in_folder, directory)
             if os.path.exists(new_folder_path):
                 Application.EXISTING_FOLDERS.append(folder)
-                os.chdir('..')
+                os.chdir("..")
                 continue
             os.mkdir(new_folder_path)
             progress.start_process(folder)
             self.process_images(files, screen)
             progress.finish_folder(folder)
             screen.count_folder()
-            os.chdir('..')
+            os.chdir("..")
 
     @staticmethod
     def process_images(files: list, screen):
         product_num = 0
-        if 'info.txt' in files:
+        if "info.txt" in files:
             product_num = Application.read_txt_file(screen)
         for num, img in enumerate(files):
             match img:
-                case 'info.txt':
+                case "info.txt":
                     continue
                 case _:
                     if Application.is_image(img):
@@ -82,11 +90,15 @@ class Application:
 
     @staticmethod
     def is_image(file_name: str) -> bool:
-        return file_name.endswith('.jpg') or file_name.endswith('.jpeg') or file_name.endswith('.png')
+        return (
+            file_name.endswith(".jpg")
+            or file_name.endswith(".jpeg")
+            or file_name.endswith(".png")
+        )
 
     @staticmethod
     def read_txt_file(screen) -> str | int:
-        with open('info.txt') as text_info:
+        with open("info.txt") as text_info:
             category = text_info.readline().strip()
             product_number = text_info.readline().strip()
             screen.count_for_category(category)  # Count category of processed folder
@@ -97,23 +109,29 @@ class Application:
                 return 0
 
     @staticmethod
-    def run_thumbnails_creator(image, name: str | None = None, photo_num: int = 0, directory: str = 'small'):
+    def run_thumbnails_creator(
+        image, name: str | None = None, photo_num: int = 0, directory: str = "small"
+    ):
         with Image.open(image) as img:
-            names = image.split('.')
+            names = image.split(".")
             img.thumbnail((1400, 1040))
             os.chdir(directory)
             random_num = Application.create_random_num(photo_num)
             if name:
-                img.save(f'{name}_{random_num}_small.jpg')
+                img.save(f"{name}_{random_num}_small.jpg")
             else:
-                img.save(f'{names[0]}_small.jpg')
-            os.chdir('..')
+                img.save(f"{names[0]}_small.jpg")
+            os.chdir("..")
 
     @staticmethod
     def create_random_num(photo_num: int):
-        return str(photo_num)*2 + str(random.randint(10000, 99999)) + random.choice('ABCDEFGabcdefg')
+        return (
+            str(photo_num) * 2
+            + str(random.randint(10000, 99999))
+            + random.choice("ABCDEFGabcdefg")
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = Application()
     app.main()
