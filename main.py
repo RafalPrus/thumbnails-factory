@@ -78,15 +78,22 @@ class Application:
     @staticmethod
     def process_images(files: list, screen):
         product_num = 0
-        if "info.txt" in files:
+        if Application.check_info_exist(files):
             product_num = Application.read_txt_file(screen)
         for num, img in enumerate(files):
-            match img:
+            match img.lower():
                 case "info.txt":
                     continue
                 case _:
                     if Application.is_image(img):
                         Application.run_thumbnails_creator(img, product_num, num)
+    @staticmethod
+    def check_info_exist(files):
+        info_names = ("info.txt", "INFO.txt", "Info.txt")
+        for name in info_names:
+            if name in files:
+                return True
+        return False
 
     @staticmethod
     def is_image(file_name: str) -> bool:
