@@ -105,7 +105,7 @@ class Application:
 
     @staticmethod
     def read_txt_file(screen) -> str | int:
-        with open("info.txt") as text_info:
+        with open("info.txt", encoding='UTF-8') as text_info:
             category = text_info.readline().strip()
             product_number = text_info.readline().strip()
             screen.count_for_category(category)  # Count category of processed folder
