@@ -53,7 +53,7 @@ class Application:
         return EntryRepository()
 
     def process_folders(
-        self, folders: list, path, progress: Progress, screen, directory: str = "small"
+        self, folders: list, path: str, progress: Progress, screen, directory: str = "small"
     ):
         for folder in folders:
             if os.path.isfile(
@@ -87,6 +87,7 @@ class Application:
                 case _:
                     if Application.is_image(img):
                         Application.run_thumbnails_creator(img, product_num, num)
+
     @staticmethod
     def check_info_exist(files):
         info_names = ("info.txt", "INFO.txt", "Info.txt")
