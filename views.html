@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module views</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">views</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cavatar%5Cdesktop%5Cpython_projects%5Cthumbnails-factory%5Cviews.py">c:\users\avatar\desktop\python_projects\thumbnails-factory\views.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="views.html#CategoryCounter">CategoryCounter</a>
+</dt><dt class="heading-text"><a href="views.html#MainMenu">MainMenu</a>
+</dt><dt class="heading-text"><a href="views.html#Progress">Progress</a>
+</dt><dt class="heading-text"><a href="views.html#Quit">Quit</a>
+</dt><dt class="heading-text"><a href="views.html#Statistics">Statistics</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="CategoryCounter">class <strong>CategoryCounter</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">counts&nbsp;the&nbsp;number&nbsp;of&nbsp;processed&nbsp;folders&nbsp;in&nbsp;a&nbsp;given&nbsp;category&nbsp;and&nbsp;summarizes&nbsp;the&nbsp;operations&nbsp;performed<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="CategoryCounter-count_folder"><strong>count_folder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CategoryCounter-count_for_category"><strong>count_for_category</strong></a>(self, cat)</dt></dl>
+
+<dl><dt><a name="CategoryCounter-count_unique_nums"><strong>count_unique_nums</strong></a>(self, number)</dt></dl>
+
+<dl><dt><a name="CategoryCounter-show_processed_folders"><strong>show_processed_folders</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CategoryCounter-show_result"><strong>show_result</strong></a>(self)</dt></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>categories_counter</strong></dt>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CATEGORIES_COUNTER</strong> = {'ARM': 0, 'ECT': 0, 'ENG': 0, 'HCL': 0, 'HYD': 0, 'MB': 0, 'NAP': 0, 'NONE': 0, 'OP': 0, 'OS': 0, ...}</dl>
+
+<dl><dt><strong>FOLDERS_DONE</strong> = 0</dl>
+
+<dl><dt><strong>LABEL</strong> = 'Wykonaj miniaturki'</dl>
+
+<dl><dt><strong>SHORTCUT</strong> = 'WM'</dl>
+
+<dl><dt><strong>UNIQUE_NUMBERS</strong> = []</dl>
+
+<dl><dt><strong>__annotations__</strong> = {'UNIQUE_NUMBERS': list[str]}</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="MainMenu">class <strong>MainMenu</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn">Static methods defined here:<br>
+<dl><dt><a name="MainMenu-draw"><strong>draw</strong></a>()</dt></dl>
+
+<dl><dt><a name="MainMenu-get_screen"><strong>get_screen</strong></a>()</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>OPTIONS</strong> = {'EX': &lt;views.Quit object&gt;, 'PS': &lt;views.Statistics object&gt;, 'WM': &lt;views.CategoryCounter object&gt;}</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Progress">class <strong>Progress</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor"><span class="code">&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn">Static methods defined here:<br>
+<dl><dt><a name="Progress-finish_folder"><strong>finish_folder</strong></a>(name)</dt></dl>
+
+<dl><dt><a name="Progress-start_process"><strong>start_process</strong></a>(name)</dt></dl>
+
+<dl><dt><a name="Progress-welcome"><strong>welcome</strong></a>()</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Quit">class <strong>Quit</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">generating&nbsp;statistics&nbsp;based&nbsp;on&nbsp;the&nbsp;date<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>LABEL</strong> = 'Zakończ'</dl>
+
+<dl><dt><strong>SHORTCUT</strong> = 'EX'</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Statistics">class <strong>Statistics</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">generating&nbsp;statistics&nbsp;based&nbsp;on&nbsp;the&nbsp;date<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Statistics-get_date"><strong>get_date</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Statistics-get_repository"><strong>get_repository</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Statistics-show_statistic"><strong>show_statistic</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>LABEL</strong> = 'Pokaż statystyki'</dl>
+
+<dl><dt><strong>SHORTCUT</strong> = 'PS'</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

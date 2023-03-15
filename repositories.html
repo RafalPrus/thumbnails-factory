@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module repositories</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">repositories</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cavatar%5Cdesktop%5Cpython_projects%5Cthumbnails-factory%5Crepositories.py">c:\users\avatar\desktop\python_projects\thumbnails-factory\repositories.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="sqlite3.html">sqlite3</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="repositories.html#EntryRepository">EntryRepository</a>
+</dt><dt class="heading-text"><a href="repositories.html#ReportRepository">ReportRepository</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="EntryRepository">class <strong>EntryRepository</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">handles&nbsp;database&nbsp;queries<br>
+that&nbsp;enter&nbsp;data&nbsp;into&nbsp;the&nbsp;entry&nbsp;table<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="EntryRepository-get_by_name"><strong>get_by_name</strong></a>(self, category_name)</dt><dd><span class="code">fetches&nbsp;data&nbsp;for&nbsp;a&nbsp;specific&nbsp;category<br>
+based&nbsp;on&nbsp;the&nbsp;submitted&nbsp;category&nbsp;name</span></dd></dl>
+
+<dl><dt><a name="EntryRepository-get_unique_numbers"><strong>get_unique_numbers</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="EntryRepository-save"><strong>save</strong></a>(self, counter: dict, unique_numbers: list)</dt><dd><span class="code">writes&nbsp;data&nbsp;to&nbsp;the&nbsp;entry&nbsp;table<br>
+based&nbsp;on&nbsp;the&nbsp;data&nbsp;retrieved&nbsp;from&nbsp;the&nbsp;counter</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ReportRepository">class <strong>ReportRepository</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">handles&nbsp;database&nbsp;queries&nbsp;that<br>
+retrieve&nbsp;data&nbsp;to&nbsp;create&nbsp;reports<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="ReportRepository-get_categories"><strong>get_categories</strong></a>(self)</dt><dd><span class="code">fetches&nbsp;detailed&nbsp;data&nbsp;on&nbsp;each<br>
+category&nbsp;from&nbsp;the&nbsp;database</span></dd></dl>
+
+<dl><dt><a name="ReportRepository-get_summary"><strong>get_summary</strong></a>(self, year: str, month: str)</dt></dl>
+
+<dl><dt><a name="ReportRepository-get_uniqe_stats"><strong>get_uniqe_stats</strong></a>(self, year: str, month: str)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
